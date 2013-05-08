@@ -1,0 +1,37 @@
+<html>
+<head>
+    <h1>$title%s</h1>
+    <script language="javascript">
+        var colors = ["#3D2845", "#005D14", "#853230"]
+        var minTime = 100;
+        var maxTime = 1000;
+        var totalTime = maxTime - minTime;
+        stats = [
+            [150, 200, 300],
+            [300, 350, 400],
+            [350, 400, 450],
+            [400, 450, 500],
+            [450, 500, 550],
+            [500, 550, 600]
+        ]
+        window.onload = function() {
+            var target = document.getElementById("target");
+            target.style.height = stats.length;
+            var graphHtml = "";
+            for (var i=0; i < stats.length; i++) {
+                var stat = stats[i];
+                for (var step=0; step < stat.length-1; step++) {
+                    var stepLeftPx = (stat[step] - minTime) / totalTime * 1500;
+                    var stepWidthPx = (stat[step+1] - stat[step]) / totalTime * 1500;
+                    var stepColor = colors[step % colors.length]
+                    graphHtml += "<div style='position:absolute; background: "+stepColor+"; height: 1px; top:"+i+"px; left:"+stepLeftPx+"px; width:"+stepWidthPx+"px'></div>"
+                }
+            }
+            target.innerHTML = graphHtml;
+        }
+    </script>
+</head>
+<body>
+<div id="target" style="border: #000 1px solid;width:1500px;position:relative;"></div>
+</body>
+</html>

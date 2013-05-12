@@ -17,6 +17,7 @@ class BoneDataSourceBenchmark extends BaseDataSourceBenchmark[BoneCPDataSource] 
     ds.setPartitionCount(2)
     ds.setMinConnectionsPerPartition(10)
     ds.setMaxConnectionsPerPartition(10)
+    ds.setDefaultAutoCommit(true)
     ds
   }
 

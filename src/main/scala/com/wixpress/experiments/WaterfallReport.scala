@@ -84,6 +84,20 @@ class WaterfallReport(val title: String) {
           	itemsToShow += 1;
           }
         }
+
+        var scale = 10;
+        while (scale * 40 < (totalTimeToRender)) {
+            scale = scale * 10
+        }
+        for (var scaleLine = scale; minTimeToRender + scaleLine < maxTimeToRender; scaleLine += scale) {
+            var scaleLineLeftPx = scaleLine / totalTimeToRender * 1500;
+            var scaleLineTimeOffset = minTimeToRender - minTime;
+            var seconds = Math.round((scaleLineTimeOffset+scaleLine)/1000000000)
+            var millis = Math.round(((scaleLineTimeOffset+scaleLine) % 1000000000)/1000000)
+            graphHtml += "<div style='position:absolute; background: #666; height: "+itemsToShow+"px;top:0px; left:"+scaleLineLeftPx+"px; width: 1px;'></div>"
+            graphHtml += "<div style='position:absolute; top: -15px; width: 50px; margin-left: -25px; text-align: center; left:"+scaleLineLeftPx+"px;font-size: 10px;'>"+seconds+"."+millis+"</div>"
+        }
+
         target.style.height = itemsToShow;
         target.innerHTML = graphHtml;
         document.getElementById("min").value = (minTimeToRender - minTime) / 1000000000

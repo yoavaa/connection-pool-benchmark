@@ -1,6 +1,6 @@
 package com.wixpress.experiments
 
-import java.util.concurrent.{Executors, ExecutorService}
+import java.util.concurrent._
 import java.util.concurrent.atomic.AtomicInteger
 import com.wixpress.hoopoe.asyncjdbc.{AsyncDataSource, QueuedDataSource}
 import java.sql._
@@ -8,6 +8,7 @@ import concurrent._
 import concurrent.duration.Duration
 import collection.mutable.ArrayBuffer
 import java.lang.System
+import concurrent.Future
 
 /**
  *

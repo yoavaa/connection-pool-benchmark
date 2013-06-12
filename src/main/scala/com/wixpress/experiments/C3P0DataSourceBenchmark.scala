@@ -20,7 +20,6 @@ class C3P0DataSourceBenchmark extends BaseDataSourceBenchmark[ComboPooledDataSou
     ds.setMaxPoolSize(20)
     ds.setAcquireIncrement(10)
     ds.setNumHelperThreads(6)
-    ds.setCheckoutTimeout(500)
     ds
   }
 
